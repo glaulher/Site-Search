@@ -1,6 +1,9 @@
 import React from 'react';
-import {StatusBar, StyleSheet, Text, View} from 'react-native';
-import Home from './src/pages/Home';
+import {StatusBar} from 'react-native';
+import Routes from './src/routes';
+import Icon from 'react-native-vector-icons/Feather';
+
+Icon.loadFont();
 
 export default function App() {
   return (
@@ -10,20 +13,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      <Home />
+      <Routes />
     </>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#6272A4',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    fontSize: 20,
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-});

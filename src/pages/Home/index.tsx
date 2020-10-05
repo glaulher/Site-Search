@@ -1,34 +1,85 @@
 import React from 'react';
-import {Image, ImageBackground, StyleSheet, Text, View} from 'react-native';
-import {RectButton} from 'react-native-gesture-handler';
+import {
+  Image,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {RectButton, BorderlessButton} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Feather';
 
-Icon.loadFont();
+import {getStatusBarHeight} from 'react-native-status-bar-height';
 
-const Home = () => {
+const Home = (): JSX.Element => {
+  const navigation = useNavigation(); // navegar entre as telas
+
+  const HandlerAbout = () => {
+    //function to make two option alert
+    Alert.alert(
+      //title
+      'Desenvolvido por:',
+      //body
+      ' Glaulher Medeiros, e-mail: glaulher.developer@gmail.com',
+    );
+  };
+
+  function handleNavigstionToFindSite() {
+    navigation.navigate('FindSite');
+  }
+
   return (
-    <ImageBackground
-      source={require('../../assets/home-background.png')}
-      imageStyle={styles.image}
-      style={styles.container}>
-      <View style={styles.main}>
-        <Image source={require('../../assets/logo.png')} />
-        <Text style={styles.title}>Informações dos sites Claro</Text>
-        <Text style={styles.description}>
-          Encontre a localização do site e CRQ para entrada no site.
-        </Text>
-      </View>
-      <View style={styles.footer}>
-        <RectButton style={styles.button} onPress={() => {}}>
-          <View style={styles.buttonIcon}>
-            <Text>
-              <Icon name="arrow-right" color="#fff" size={24} />
+    <KeyboardAvoidingView
+      style={{flex: 1}}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+      <ImageBackground
+        source={require('../../assets/home-background.png')}
+        style={styles.container}
+        imageStyle={styles.image}>
+        <View style={styles.info}>
+          <BorderlessButton>
+            <Text onPress={HandlerAbout}>
+              <Icon name="info" color="#52c3a3" size={32} />
+            </Text>
+          </BorderlessButton>
+        </View>
+        <View style={styles.main}>
+          <Image source={require('../../assets/logo.png')} />
+          <View>
+            <Text style={styles.title}>Informações dos sites Claro</Text>
+            <Text style={styles.description}>
+              Encontre a localização do site e CRQ para entrada no site.
             </Text>
           </View>
-          <Text style={styles.buttonText}>Consultar CRQ</Text>
-        </RectButton>
-      </View>
-    </ImageBackground>
+        </View>
+
+        <View style={styles.footer}>
+          <RectButton
+            style={styles.button}
+            onPress={handleNavigstionToFindSite}>
+            <View style={styles.buttonIcon}>
+              <Text>
+                <Icon name="arrow-right" color="#FFF" size={24} />
+              </Text>
+            </View>
+            <Text style={styles.buttonText}>Find Sites Claro</Text>
+          </RectButton>
+
+          <RectButton style={styles.button} onPress={() => {}}>
+            <View style={styles.buttonIcon}>
+              <Text>
+                <Icon name="arrow-right" color="#FFF" size={24} />
+              </Text>
+            </View>
+            <Text style={styles.buttonText}>Consultar CRQ</Text>
+          </RectButton>
+        </View>
+      </ImageBackground>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -36,6 +87,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 32,
+    paddingTop: 20 + getStatusBarHeight(),
   },
 
   main: {
@@ -60,7 +112,9 @@ const styles = StyleSheet.create({
     lineHeight: 24,
   },
 
-  footer: {},
+  footer: {
+    paddingBottom: 0,
+  },
 
   select: {},
 
@@ -80,7 +134,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     overflow: 'hidden',
     alignItems: 'center',
-    marginTop: 8,
+    marginTop: 40,
   },
 
   buttonIcon: {
@@ -102,6 +156,9 @@ const styles = StyleSheet.create({
   image: {
     width: 500,
     height: 500,
+  },
+  info: {
+    alignItems: 'flex-end',
   },
 });
 

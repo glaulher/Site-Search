@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/glaulher/Documentos/javascript/project/xs/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-tr/values-tr.xml",
+            "outputFile": "/home/glaulher/Documentos/javascript/project/Site-Search/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-tr/values-tr.xml",
             "map": [
                 {
                     "source": "/home/glaulher/.gradle/caches/transforms-2/files-2.1/639e914bfc1efa21e36199d3ff2c5eef/core-1.1.0/res/values-tr/values-tr.xml",

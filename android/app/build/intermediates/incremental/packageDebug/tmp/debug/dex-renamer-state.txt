@@ -1,4 +1,4 @@
-#Sat Sep 26 23:20:51 BRT 2020
-base.0=/home/glaulher/Documentos/javascript/project/xs/android/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+#Sun Oct 04 22:00:27 BRT 2020
+base.0=/home/glaulher/Documentos/javascript/project/Site-Search/android/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
